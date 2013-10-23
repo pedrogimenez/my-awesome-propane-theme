@@ -312,18 +312,25 @@ if (displayAvatars) {
       this.chat.windowmanager.scrollToBottom();
     },
 
-   // onMessagesInserted: function(messages) {
-   //   var scrolledToBottom = this.chat.windowmanager.isScrolledToBottom();
+    onMessagesInserted: function(messages) {
+      var scrolledToBottom = this.chat.windowmanager.isScrolledToBottom();
 
-   //   for (var i = 0; i < messages.length; i++) {
-   //     var message = messages[i];
-   //     message.addAvatar();
-   //   }
+      for (var i = 0; i < messages.length; i++) {
+        var message = messages[i], author = message.authorElement();
+        email = author.getAttribute('data-email');
+        if (message.bodyCell.innerText.indexOf("was successful") != -1 &&
+           email === "pruebas@chicisimo.com") {
+          message.bodyCell.classList.add("successful_build");
+        } else if (message.bodyCell.innerText.indexOf("failed") != -1 && 
+                   email === "pruebas@chicisimo.com") {
+          message.bodyCell.classList.add("failed_build");
+        }
+      }
 
-   //   if (scrolledToBottom) {
-   //     this.chat.windowmanager.scrollToBottom();
-   //   }
-   // }
+      if (scrolledToBottom) {
+        this.chat.windowmanager.scrollToBottom();
+      }
+    }
   });
 
   /* Here is how to install your responder into the running chat */
