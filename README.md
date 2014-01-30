@@ -1,4 +1,4 @@
-my-awesome-propane-theme
+My propane theme
 ========================
 
-propane theme
+Moved to [chicisimo/propane-theme](https://github.com/chicisimo/propane-theme).
